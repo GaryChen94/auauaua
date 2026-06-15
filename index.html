@@ -153,37 +153,32 @@
     <script>
         const typeMap = { 'food': '食糧', 'plant': '防禦', 'souvenir': '紀念品' };
 
-        // 重新考證的 10串 U型 Tafuliae (蘭加蘭加貝珠錢) SVG 圖像
+        // 重新考證的 10串 U型 Tafuliae (langalanga貝珠錢) SVG 圖像
         const tafuliaeSVG = `
             <div style="width: 2.5em; height: 1.6em; display: inline-block; vertical-align: middle; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));">
                 <svg viewBox="0 0 100 60" width="100%" height="100%">
                     <g fill="none" stroke-width="2.5" stroke-linecap="butt">
-                        <!-- 最外層珠串 -->
                         <path d="M 28 20 C 45 10, 96 10, 96 30 C 96 50, 45 50, 28 40" stroke="#f8f9fa" />
                         <path d="M 28 20 C 45 10, 96 10, 96 30 C 96 50, 45 50, 28 40" stroke="#111111" stroke-dasharray="3 9" stroke-dashoffset="0" />
                         <path d="M 28 20 C 45 10, 96 10, 96 30 C 96 50, 45 50, 28 40" stroke="#dca76a" stroke-dasharray="3 9" stroke-dashoffset="3" />
                         <path d="M 28 20 C 45 10, 96 10, 96 30 C 96 50, 45 50, 28 40" stroke="#5c3a21" stroke-dasharray="3 9" stroke-dashoffset="6" />
 
-                        <!-- 第二層珠串 -->
                         <path d="M 28 20 C 45 14, 90 14, 90 30 C 90 46, 45 46, 28 40" stroke="#f8f9fa" />
                         <path d="M 28 20 C 45 14, 90 14, 90 30 C 90 46, 45 46, 28 40" stroke="#111111" stroke-dasharray="3 9" stroke-dashoffset="2" />
                         <path d="M 28 20 C 45 14, 90 14, 90 30 C 90 46, 45 46, 28 40" stroke="#dca76a" stroke-dasharray="3 9" stroke-dashoffset="5" />
                         <path d="M 28 20 C 45 14, 90 14, 90 30 C 90 46, 45 46, 28 40" stroke="#5c3a21" stroke-dasharray="3 9" stroke-dashoffset="8" />
 
-                        <!-- 第三層珠串 -->
                         <path d="M 28 20 C 45 18, 84 18, 84 30 C 84 42, 45 42, 28 40" stroke="#f8f9fa" />
                         <path d="M 28 20 C 45 18, 84 18, 84 30 C 84 42, 45 42, 28 40" stroke="#111111" stroke-dasharray="3 9" stroke-dashoffset="4" />
                         <path d="M 28 20 C 45 18, 84 18, 84 30 C 84 42, 45 42, 28 40" stroke="#dca76a" stroke-dasharray="3 9" stroke-dashoffset="7" />
                         <path d="M 28 20 C 45 18, 84 18, 84 30 C 84 42, 45 42, 28 40" stroke="#5c3a21" stroke-dasharray="3 9" stroke-dashoffset="1" />
 
-                        <!-- 最內層珠串 -->
                         <path d="M 28 20 C 45 22, 78 22, 78 30 C 78 38, 45 38, 28 40" stroke="#f8f9fa" />
                         <path d="M 28 20 C 45 22, 78 22, 78 30 C 78 38, 45 38, 28 40" stroke="#111111" stroke-dasharray="3 9" stroke-dashoffset="6" />
                         <path d="M 28 20 C 45 22, 78 22, 78 30 C 78 38, 45 38, 28 40" stroke="#dca76a" stroke-dasharray="3 9" stroke-dashoffset="9" />
                         <path d="M 28 20 C 45 22, 78 22, 78 30 C 78 38, 45 38, 28 40" stroke="#5c3a21" stroke-dasharray="3 9" stroke-dashoffset="3" />
                     </g>
                     
-                    <!-- 紅色燕尾端頭 -->
                     <path d="M 30 16 L 15 20 L 30 24 L 26 20 Z" fill="#e53935"/>
                     <path d="M 30 36 L 15 40 L 30 44 L 26 40 Z" fill="#e53935"/>
                 </svg>
@@ -215,7 +210,7 @@
             'souv_au_e': { name: '無尾熊木雕 (Koala)', emoji: '🐨', type: 'souvenir', desc: '東澳洲特有有袋類動物木雕' },
             'souv_nz': { name: '綠玉護身符 (Pounamu)', emoji: '🟩', type: 'souvenir', desc: '毛利人的珍貴礦石' },
             'souv_fm': { name: '雅浦島石幣 (Rai)', emoji: '🪙', type: 'souvenir', desc: '巨大的石頭貨幣' },
-            'souv_pw': { name: '玳瑁盤 (Toluk)', emoji: '🪸', type: 'souvenir', desc: '帛琉女系社會財富象徵' },
+            'souv_pw': { name: '木雕板 (Storyboard)', emoji: '🪵', type: 'souvenir', desc: '記錄帛琉傳統神話與歷史的木雕藝術' },
             'souv_mh': { name: '棒圖導航儀 (Mattang)', emoji: '🗺️', type: 'souvenir', desc: '海浪與洋流的實體海圖' },
             'souv_sb': { name: 'langalanga貝珠錢 (Tafuliae)', emoji: tafuliaeSVG, type: 'souvenir', desc: '索羅門群島極具價值的傳統貝殼貨幣' },
             'souv_vu': { name: '傳統沙畫 (Sandroing)', emoji: '🖼️', type: 'souvenir', desc: '萬那杜無形文化遺產' },
@@ -299,7 +294,7 @@
 
         let gatherTimer = null;
         let gatherTimeLeft = 0;
-        let toastTimeout = null; // 全域變數，修復視窗計時器衝突
+        let toastTimeout = null; 
 
         const mapBounds = [[-70, -60], [70, 390]]; 
         const map = L.map('real-map', { zoomControl: false, worldCopyJump: false, maxBounds: mapBounds, maxBoundsViscosity: 1.0, minZoom: 3 }).setView([15.0, 135.0], 4);
@@ -403,7 +398,6 @@
             return path[0] === start ? path : [];
         }
 
-        // 獨立出的 Toast 顯示函式，解決定時器覆蓋 Bug
         function showToast(contentHtml, borderColor = 'cyan', duration = 5000) {
             const toast = document.getElementById('toast-container');
             toast.innerHTML = contentHtml;
@@ -522,7 +516,7 @@
                 }
             }
 
-            // 3. 遭遇風暴 (將機率微調至 25% 方便測試)
+            // 3. 遭遇風暴
             if (Math.random() < 0.25) {
                 let plantUsed = null;
                 for (let itemId in player.inventory) { if (items[itemId].type === 'plant' && player.inventory[itemId] > 0) { plantUsed = itemId; break; } }
@@ -647,7 +641,7 @@
 
             let sovCount = 0;
             for (let id in player.inventory) { if (items[id].type === 'souvenir') sovCount++; }
-            if (sovCount >= totalSouvenirs) setTimeout(() => { alert("🎉 太神啦！你成功收集了所有據點的紀念品，完成了南島大航海！"); }, 500);
+            if (sovCount >= totalSouvenirs) setTimeout(() => { alert("🎉 太神啦！你成功收集了所有據點的紀念品，完成了大洋貿易之旅！"); }, 500);
         };
 
         window.useFood = function(id) {
